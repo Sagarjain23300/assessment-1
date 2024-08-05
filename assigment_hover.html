@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      overflow: hidden;
+      background-color: blueviolet;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: end;
+      gap: 50px;
+      padding-right: 50px;
+      height: 50px;
+      align-items: center;
+    }
+
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+
+
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+
+    .dropdown:hover .dropbtn {
+      background-color: red;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: blueviolet;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .Morecontent {
+      display: none;
+      position: absolute;
+      background-color: blueviolet;
+      top: 80px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+      right: -92px;
+    }
+
+    .Morecontent a {
+      float: none;
+      color: white;
+
+      text-decoration: none;
+      display: block;
+      text-align: left;
+
+    }
+
+    .Morecontent a:hover {
+      background-color: #ddd;
+
+    }
+
+    .show:hover~.Morecontent {
+      display: block;
+    }
+
+    .login {
+      width: 100px;
+      height: 30px;
+    }
+
+    p {
+
+      padding-right: 550px;
+      color: white;
+    }
+
+    .good {
+      background-color: inherit;
+      border: none;
+    }
+
+    .Morecontent:hover~.dropdown-content {
+    
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="Logo">
+      <p>Logo</p>
+    </div>
+    <a href=""> Home</a>
+    <a href=""> About</a>
+    <div class="dropdown">
+      <button class="dropbtn">
+        Service
+        <i class="fa-solid fa-angle-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#" class="show">Link 3<i class="fa-solid fa-angle-right"></i> </a>
+        <div class="Morecontent">
+
+          <a href="">Html</a>
+          <a href="">Css</a>
+          <a href="">Bootstrap</a>
+          <a href="">java</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="">Blogs</a>
+    <a href="">Contact</a>
+    <button class="login">Login</button>
+</body>
+
+</html>
