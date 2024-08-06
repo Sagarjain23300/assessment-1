@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(./iamges/room-interior-hotel-bedroom.jpg);
+            opacity: 0.9;
+            background-size: cover;
+        }
+
+        .heading {
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+
+            background-color: white;
+            width: 60%;
+            margin: 30px auto;
+            padding: 40px;
+            border: 1px solid #e30707;
+            border-radius: 10px;
+            box-shadow: 1px 2px 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #218838;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="heading">Restaurant Booking Form</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="bookingChoice">Choice of Booking:</label>
+                <select id="bookingChoice" name="bookingChoice">
+                    <option value="fullDay">Full day booking</option>
+                    <option value="halfDay">Half day booking</option>
+                    <option value="hourly">Hourly booking</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">User Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="phone">Mobile Number:</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="guests">No of Persons:</label>
+                <input type="number" id="guests" name="guests" min="1" max="20">
+            </div>
+            <div class="form-group" id="dateGroup">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <div class="form-group hidden" id="timeGroup">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time">
+            </div>
+            <div class="form-group hidden" id="slotGroup">
+                <label for="slot">Slot:</label>
+                <select id="slot" name="slot">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Book Now</button>
+            </div>
+        </form>
+
+        <script>
+
+            document.getElementById('bookingChoice').addEventListener('change', function () {
+                let choice = this.value;
+                let dateGroup = document.getElementById('dateGroup');
+                let timeGroup = document.getElementById('timeGroup');
+                let slotGroup = document.getElementById('slotGroup');
+
+
+                dateGroup.classList.remove('hidden');
+                timeGroup.classList.add('hidden');
+                slotGroup.classList.add('hidden');
+
+                if (choice === 'fullDay') {
+
+                } else if (choice === 'halfDay') {
+
+                    slotGroup.classList.remove('hidden');
+                } else if (choice === 'hourly') {
+
+                    timeGroup.classList.remove('hidden');
+                }
+            });
+
+            document.getElementById('bookingForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                let bookingChoice = document.getElementById('bookingChoice').value;
+                let name = document.getElementById('name').value;
+                let phone = document.getElementById('phone').value;
+                let email = document.getElementById('email').value;
+                let guests = document.getElementById('guests').value;
+                let date = document.getElementById('date').value;
+                let time = document.getElementById('time').value;
+                let slot = document.getElementById('slot').value;
+
+                if (validateForm(bookingChoice, name, phone, email, guests, date, time, slot)) {
+                    alert('Booking successful!');
+
+                }
+            });
+
+            function validateForm(bookingChoice, name, phone, email, guests, date, time, slot) {
+                if (name === '') {
+                    alert('User Name is required');
+                    return false;
+                }
+                if (phone === '') {
+                    alert('Valid Mobile Number is required');
+                    return false;
+                }
+                if (email === '') {
+                    alert('Valid Email is required');
+                    return false;
+                }
+                if (guests === '') {
+                    alert('Please enter a valid number of persons ');
+                    return false;
+                }
+                if (date === '') {
+                    alert('Date is required');
+                    return false;
+                }
+                if (bookingChoice === 'hourly' && time === '') {
+                    alert('Time is required for hourly booking');
+                    return false;
+                }
+                if (bookingChoice === 'halfDay' && slot === '') {
+                    alert('Slot is required for half day booking');
+                    return false;
+                }
+                return true;
+            }
+
+
+
+
+        </script>
+</body>
+
+</html>
